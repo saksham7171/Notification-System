@@ -1,10 +1,14 @@
 # Notification-System
 
+``
+A demo application using node.js and angular.js . It allows users to get notified in realtime via email when their subscribed data is changed.
+```
+
 # Required-Software
 
 1. Node
 2. Bower
-3. Mongo
+3. MongoDB
 
 # Steps to use
 ```
