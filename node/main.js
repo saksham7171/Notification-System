@@ -7,7 +7,7 @@ var url = 'mongodb://localhost:27017/demo';
 var server=http.createServer(function (request, response) {
     allowCORS(request,response);
     
-    var transporter = nodemailer.createTransport('smtps://{{email-id}}:{{password}}@smtp.gmail.com');
+    var transporter = nodemailer.createTransport('smtps://demo.notification7171:password7171@smtp.gmail.com');
 
     MongoClient.connect(url, function (err, db) {
       if (err) {
@@ -38,7 +38,9 @@ var server=http.createServer(function (request, response) {
 	       });
         }
         else if(request.url==='/createUsers'){
+            
            response.writeHead('Content-Type', 'application/json');
+            
             var user1={_id:1,"name":"Dummy User","email":"","data":"My dummy user data","subscribers":[],"subscribed":false};
             var user2={_id:2,"name":"Saksham gmail","email":"saksham.shrm03@gmail.com","data":"","subscribers":[],"subscribed":false};
             var user3={_id:3,"name":"Saksham hotmail","email":"saksham.shrm03@hotmail.com","data":"","subscribers":[],"subscribed":false};
