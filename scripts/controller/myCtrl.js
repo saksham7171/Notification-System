@@ -12,10 +12,7 @@ app.controller('myCtrl',['$scope','$http','toastr', function ($scope,$http,toast
             }).
             success(function(response) {
                 $scope.user=response;
-            }).
-            error(function(status) {
-                //your code when fails
-            });
+            })
        } 
        var getUsers=function(){ 
            $http({
@@ -24,10 +21,7 @@ app.controller('myCtrl',['$scope','$http','toastr', function ($scope,$http,toast
             }).
             success(function(response) {
                 $scope.userList=response;
-            }).
-            error(function(status) {
-                //your code when fails
-            });
+            })
        }
        
        getMainUser();
