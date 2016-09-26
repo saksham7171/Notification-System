@@ -1,7 +1,8 @@
 # Notification-System
 
 ```
-A demo application using node.js and angular.js . It allows users to get notified in realtime via email when their subscribed data is changed.
+A demo application using node.js and angular.js . It allows users to get notified in realtime via 
+email when their subscribed data is changed.
 ```
 
 # Required-Software
