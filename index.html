@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Notification System</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <script type="text/javascript" src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controller/myCtrl.js"></script>
+  </head>
+  <body ng-app="myApp" ng-controller="myCtrl">
+      <center><h1>Notification System</h1></center> 
+      <hr>
+      <div class="row">
+            <div class="col-md-4 col-md-offset-3">
+                <input class="form-control" type="text" ng-model="user.data" ng-disabled="editable">
+            </div>
+            <div ng-init="editable=true" class="col-md-1 col-md-offset-1" ng-show="editable">
+                <button class="btn btn-block btn-primary" ng-click='editable=!editable'> Edit </button>
+            </div>
+          <div ng-hide="editable">
+              <div class="col-md-1 col-md-offset-1" >
+                <button class="btn btn-block btn-success" ng-click="save()"> Save </button>
+            </div>
+              <div class="col-md-1" >
+               <button class="btn btn-block btn-danger" ng-click='editable=!editable'> Cancel </button>
+            </div>
+          </div>
+            
+      </div>
+      <hr>
+      <center><h3>Users List</h3></center>
+       <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+               <table class="table table-striped table-bordered table-hover">
+                   <tr>
+                       <th>User</th>
+                       <th>Action</th>
+                   </tr>
+                  <tr ng-repeat="sub in userList">
+                    <td>{{sub.name}}</td>
+                      <td> 
+                          <button ng-hide="sub.subscribed" ng-click="subscribe(sub._id)" class="btn btn-sm btn-success" > Subscribe </button>
+                          <button ng-show="sub.subscribed" ng-click="unsubscribe(sub._id)" class="btn btn-sm btn-danger" > Unsubscribe </button>
+                      </td>
+                  </tr>
+               </table>
+            </div>
+      </div>
+  </body>
+</html>

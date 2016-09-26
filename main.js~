@@ -1,0 +1,67 @@
+var http = require("http");
+
+http.createServer(function (request, response) {
+
+   // Send the HTTP header 
+   // HTTP Status: 200 : OK
+   // Content Type: text/plain
+   response.writeHead(200, {'Content-Type': 'text/plain'});
+   
+   // Send the response body as "Hello World"
+   //response.end('Hello World\n');
+response.end('new Hello\n');
+}).listen(8081);
+
+// Console will print the message
+console.log('Server running at http://127.0.0.1:8081/');
+
+
+//lets require/import the mongodb native drivers.
+var mongodb = require('mongodb');
+var triggers= require('mongo-triggers');
+console.log(triggers);
+
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+var MongoClient = mongodb.MongoClient;
+
+// Connection URL. This is where your mongodb server is running.
+var url = 'mongodb://localhost:27017/demo';
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    //HURRAY!! We are connected. :)
+    console.log('Connection established to', url);
+
+    // do some work here with the database.
+    var collection = db.collection('users');
+	console.log(db.users)
+console.log(collection)
+		
+triggers(collection).insert(function(document, next) {
+   	console.log('Insrted');
+    	next();
+	});
+
+
+    //Create some users
+    var user1 = {name: 'modulus admin', age: 42, roles: ['admin', 'moderator', 'user']};
+    var user2 = {name: 'modulus user', age: 22, roles: ['user']};
+    var user3 = {name: 'modulus super admin', age: 92, roles: ['super-admin', 'admin', 'moderator', 'user']};
+
+    // Insert some users
+    collection.insert([user1, user2, user3], function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+      }
+
+
+    //Close connection
+    db.close();
+	});
+  }
+});

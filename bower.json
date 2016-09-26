@@ -1,0 +1,21 @@
+{
+  "name": "node",
+  "authors": [
+    "saksham <saksham.sharma@tothenew.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-toastr": "^2.1.1"
+  }
+}
