@@ -5,7 +5,7 @@ A demo application using node.js and angular.js . It allows users to get notifie
 email when their subscribed data is changed.
 ```
 
-# Required-Software
+# Install Requirements
 
 1. Node
 2. Bower
